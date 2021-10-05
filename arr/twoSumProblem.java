@@ -7,8 +7,57 @@ public class twoSumProblem  {
         int n = sc.nextInt();
         int[] arr =sc.intArr(n);
         int k=sc.nextInt();
-        pw.print(bruteForce(arr,k));
+        //pw.print(bruteForce(arr,k));
+        //pw.print(hashing(arr,k));
+       // pw.print(bs(arr,k));
+        pw.print(walkingInward(arr,k));
+
     }
+
+    private static boolean walkingInward(int[] arr, int k) {
+        Arrays.sort(arr);
+        int lhs=0, rhs=arr.length-1;
+        while(lhs<rhs){
+            int sum =arr[lhs]+arr[rhs];
+            if(sum==k) return true;
+            else if(sum<k)lhs++;
+            else rhs--;
+        }
+        return false;
+    }
+
+    private static boolean bs(int[] arr, int k) {
+        Arrays.sort(arr);
+        for (int i = 0; i < arr.length; i++) {
+            int siblingIndex=Arrays.binarySearch(arr,k-arr[i]);
+            if(siblingIndex>=0){ // Found it!
+                /* If this points at us, then the pair exists only if
+                 * there is another copy of the element. Look ahead of
+                 * us and behind us.
+                 */
+                if(siblingIndex!=i || (i>0 && arr[i-1]==arr[i]||(i<arr.length-1&&arr[i+1]==arr[i]))){
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+
+    private static boolean hashing(int[] arr, int k) {
+        HashSet<Integer> values = new HashSet<Integer>();
+        for (int i = 0; i < arr.length; i++) {
+            if (values.contains(k - arr[i])) return true;
+            values.add(arr[i]);
+        }
+//        for (int x: values) {
+//            pw.print(x+" ");
+//
+//        }
+        return false;
+    }
+
+
 
     private static boolean bruteForce(int[] arr, int k) {
         for (int i = 0; i <arr.length; i++) {
