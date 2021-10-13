@@ -13,6 +13,7 @@ public class Paris {
                 System.out.println(s-arr[i]+ " "+arr[i]);
             set.add(arr[i]);
         }
+        
 
     }
 }
