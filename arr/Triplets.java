@@ -9,7 +9,10 @@ public class Triplets {
         int n=arr.length;
         Arrays.sort(arr);
         List<List<Integer>> res = new ArrayList<>();
+        // and we have to ensure that remaining part contains atleast two numbers
+        // pick every arr[i] and pair sum for remaining part
         for(int i=0;i<=n-3;i++){
+
             int j=i+1;
             int k=n-1;
             while(j<k){
