@@ -11,8 +11,8 @@ public class twoSumProblem  {
         //pw.print(hashing(arr,k));
        // pw.print(bs(arr,k));
         pw.print(walkingInward(arr,k));
-
     }
+
 
     private static boolean walkingInward(int[] arr, int k) {
         Arrays.sort(arr);
