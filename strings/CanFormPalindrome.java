@@ -9,8 +9,7 @@ public class CanFormPalindrome {
 
         int odd=0;
         for (int i = 0; i < 26; i++) {
-            if((freq[i]&1)!=0)
-                odd++;
+            if((freq[i]&1)!=0) odd++;
             if(odd>1) {System.out.println(false); return;}
         }
         System.out.println(true);
