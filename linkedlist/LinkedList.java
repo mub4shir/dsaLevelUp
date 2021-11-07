@@ -1,6 +1,5 @@
 package linkedlist;
 
-import java.awt.event.ItemEvent;
 
 public class LinkedList {
     private class Node{
@@ -17,7 +16,7 @@ public class LinkedList {
         nn.next=head;
         head=nn;
     }
-    public void printList(){
+    public void printList(Node head){
         Node tmp=head;
         while(tmp!=null){
             System.out.print(tmp.data+"->");
@@ -70,13 +69,22 @@ public class LinkedList {
         System.out.println(tmp1.data);
 
     }
+    public Node reverseList(Node head){
+        Node prev =null;
+        Node curr =head;
+        while(curr!=null){
+            Node next= curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
 
 
     public static void main(String[] args) {
         LinkedList ll =new LinkedList();
-        for (int i = 7; i >=1 ; i--) {
-            ll.addAtFirst(i);
-        }
+        for (int i = 7; i >=1 ; i--) ll.addAtFirst(i);
         ll.nthFromEnd(2);
         ll.addAtFirst(101);
         ll.addAtEnd(111);
@@ -84,7 +92,9 @@ public class LinkedList {
         ll.deleteAtEnd();
         ll.addAtMiddle(3,333);
         ll.deleteAtIndex(3);
-        ll.printList();
+        ll.printList(ll.head);
+        Node prev =ll.reverseList(ll.head);
+        ll.printList(prev);
     }
 
 
