@@ -13,11 +13,12 @@ public class RotatedSearch {
 
     private static int  minElement(int[] arr) {
         int n=arr.length;
+        if(arr[0]<arr[n-1]) return 0;
         int s=0;
         int e=n-1;
         int pivot=-1;
         while(s<=e){
-            if(arr[s]<=arr[e]) return s;
+            if(arr[s]<arr[e]) return s;
             int m = s+(e-s)/2;
             int next= (m+1) % n;
             int prev= (m-1+n)%n;
